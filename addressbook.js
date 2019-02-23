@@ -163,9 +163,17 @@ function exportFile(){
     contacts.forEach((contact, index) => {
     console.log('exporting contact '+contact.name);
     card = new vCard();
-    card.set("n", contact.name);
-    card.set("tel", contact.number);
-    fs.appendFileSync("vcard.txt", card.toString(),(err) => {
+    card.set("N", contact.name);
+    card.set("TEL", contact.number);
+    card.set("TEL;type=CELL", contact.cellphone);
+    card.set("EMAIL", contact.email);
+    card.set("ADR", contact.address);
+    card.set("BDAY", contact.birthdate);
+    card.set("ORG", contact.company);
+    card.set("URL", contact.url);
+    card.set("PHOTO", contact.photo);
+
+    fs.appendFileSync("vcard.txt", card.toString() + '\n',(err) => {
       if (err) throw err;
       console.log("the data was exported!");
     });
