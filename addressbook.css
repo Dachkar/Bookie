@@ -1,0 +1,115 @@
+/* zero out margins and padding to get full bleed effect */
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+/* this is the wrapper around the entire app */
+.contactapp {
+  background: #c5cbe3;
+  display:flex;
+  justify-content: center;
+  align-items: stretch;
+  height:100%;
+  overflow: scroll;
+}
+
+/* left column, list of contacts */
+.contactlist {
+  padding:0px;
+  margin:10px;
+  min-height: 200px;
+  flex-basis:60%;
+}
+
+.contactlist table {
+  width:100%;
+  margin:0;
+  border-spacing: 0px;
+  padding:5px;
+}
+
+.contactlist tr:nth-child(even) {
+  background:#E8E3D7;
+}
+
+.tr {
+  border: 1px;
+}
+
+.contactlist tr:not(:first-child):hover {
+  background: #F6D085;
+  color:rgb(85, 84, 84);
+  cursor:pointer;
+}
+
+/* right column, contact details */
+.contact{
+  background: #4056a1;
+  padding:0px;
+  margin:0px;
+  height:100%;
+  float:right;
+  flex-basis: 40%;
+}
+
+.contactpic{
+  text-align:center;
+  padding:10px;
+}
+
+.contact table {
+  padding:5px;
+  margin:15px;
+  background:#efe2ba;
+  width:90%;
+  border: 2px;
+}
+
+.fa-plus {
+  color: #4056a1;
+  text-shadow: 0 0 4px black;
+}
+.fa-plus:hover {
+  color: #ffd966;
+  text-shadow: 0 0 6px black;
+  cursor:pointer;
+}
+
+* {
+  font-family: 'Karla', sans-serif;
+}
+
+.addContact {
+  background-color: #c5cbe3;
+  padding: 3px;
+}
+
+.addFormInput {
+  margin: 3px;
+  display:inline-block;
+}
+
+.addform label{
+  float: right;
+}
+
+.addFormField {
+  margin-left: 2px;
+}
+
+.editDelete {
+  color: #efe2ba;
+  text-shadow: 0 0 4px black;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.editDelete:hover {
+  color: #ffd966;
+  text-shadow: 0 0 6px black;
+  cursor:pointer;
+}
+
+
+

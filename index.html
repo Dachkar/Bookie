@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Contacts</title>
+  <link rel="stylesheet" href="addressbook.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+</head>
+<body>
+  <div class="contactapp">
+
+    <div class="contactlist">
+      <div>
+      <h1 align="center">Contacts<span  style="float:right"><i class="fas fa-plus fa-lg" onclick="showAddContactModal();"></i></span></h1>
+      </div>
+      <hr>
+      <table id="contactlist">
+        <tr><th>Name</th><th>Phone</th></tr>
+      </table>
+    </div>
+    <div class="contact">
+
+      <div>
+        <div class="contactpic">
+          
+        </div>
+        <div style="text-align:center">
+          <span style="color:white"><i id="editbtn" class="fas fa-pencil-alt editDelete fa-2x"></i></span>
+          <span style="color:white"><i id="deletebtn" class="far fa-trash-alt editDelete fa-2x"></i></span>
+        </div>
+
+      </div>
+      <div class="contactinfo">
+        <table>
+          <tr>
+            <td>
+              Name
+            </td>
+            <td id="selectedname">
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Phone
+            </td>
+            <td id="selectednumber">
+
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              Cellphone
+            </td>
+            <td id="selectedcellphone">
+
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              Email
+            </td>
+            <td id="selectedemail">
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Address
+            </td>
+            <td id="selectedaddress">
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Birthdate
+            </td>
+            <td id="selectedbirthdate">
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Company
+            </td>
+            <td id="selectedcompany">
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Url
+            </td>
+            <td id="selectedurl">
+
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- add scripts at the bottom, so that the DOM is defined when they load -->
+<script src="./addressbook.js"></script>
+<script>
+  // when the document loads, load the contact list from file
+  $(document).ready(loadAndDisplayContacts());
+  require('electron').ipcRenderer.on('asynchronous-message', (event, message) => {
+        console.log(message)
+        if (message === "refreshList"){
+          loadAndDisplayContacts()
+        }
+        else if (message === "importFile"){
+          const {dialog} = require('electron').remote;
+          dialog.showOpenDialog(function (fileNames) {
+              // fileNames is an array that contains all the selected
+              if(fileNames === undefined) {
+                 console.log("No file selected");
+              } else {
+                 fileNames.forEach((fileName, index) => {importFile(fileName)});
+              }
+          });
+        }
+        else if (message === "exportFile"){
+          exportFile();
+        }
+  })
+</script>
+
+</html>
