@@ -1,2 +1,2 @@
-a,,,,,,,,
-Douglas Achkar,716 550 2501,584 754 8547,doug@google.com,Rua osvaldo cruz,1998-06-09,Jensleap,www.dosel.com,C:\fakepath\dragdrop.png
+Douglas Achkar,716 550 2501,584 754 8547,doug@google.com,Rua osvaldo cruz,1998-06-09,Jensleap,https://www.google.com,C:\fakepath\dragdrop.png
+

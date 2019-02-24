@@ -83,7 +83,7 @@ function loadDetails(index){
     $('#selectedaddress').text(contact.address);
     $('#selectedbirthdate').text(contact.birthdate);
     $('#selectedcompany').text(contact.company);
-    $('#selectedurl').text(contact.url);
+    $('#selectedurl').html('<a target="_blank" href="'+contact.url+'">'+contact.url+' </a>');
     
     $('#editbtn').off('click');
     $('#editbtn').on('click', () => {

@@ -28,6 +28,12 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   }
 })
 
+//Allowing links to be opened from app.
+ipcMain.on('new-window', function(e, url) {
+  e.preventDefault();
+  require('electron').shell.openExternal(url);
+});
+
 function showEditContactModal(){
   // create a dialog window for modal inputs
   modal = new BrowserWindow({parent:win, modal:true, show:false, width:350, height:280, frame:false})
