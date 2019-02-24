@@ -127,7 +127,7 @@ function loadDetails(index){
     }
     else {
       $(".contactpic").empty();
-      $('<p>Has custom Photo</p>').appendTo($(".contactpic"));
+      $('<p>Custom photo could not load.</p>').appendTo($(".contactpic"));
     }
     
     
