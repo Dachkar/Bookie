@@ -149,7 +149,7 @@ function importFile(filename){
     let data = fs.readFileSync(filename, 'utf8');
     var cards = vCard.parse(data);
     cards.forEach((card, index) => {
-      fs.appendFileSync('contacts.txt', card.get("n")+","+card.get("tel")+'\n', (err) => {
+      fs.appendFileSync('contacts.txt', card.get("n")+","+card.get("tel")+","+card.get("cell")+","+card.get("email")+","+card.get("adr")+","+card.get("bday")+","+card.get("org")+","+card.get("url")+","+card.get("photo")+'\n', (err) => {
         if (err) throw err;
         console.log("the data was appended!");
       });
@@ -163,15 +163,15 @@ function exportFile(){
     contacts.forEach((contact, index) => {
     console.log('exporting contact '+contact.name);
     card = new vCard();
-    card.set("N", contact.name);
-    card.set("TEL", contact.number);
-    card.set("TEL;type=CELL", contact.cellphone);
-    card.set("EMAIL", contact.email);
-    card.set("ADR", contact.address);
-    card.set("BDAY", contact.birthdate);
-    card.set("ORG", contact.company);
-    card.set("URL", contact.url);
-    card.set("PHOTO", contact.photo);
+    card.set("n", contact.name);
+    card.set("tel", contact.number);
+    card.set("cell", contact.cellphone);
+    card.set("email", contact.email);
+    card.set("adr", contact.address);
+    card.set("bday", contact.birthdate);
+    card.set("org", contact.company);
+    card.set("url", contact.url);
+    card.set("photo", contact.photo);
 
     fs.appendFileSync("vcard.txt", card.toString() + '\n',(err) => {
       if (err) throw err;

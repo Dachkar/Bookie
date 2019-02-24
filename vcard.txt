@@ -1,44 +1,12 @@
 BEGIN:VCARD
 VERSION:4.0
--N:Issac Kato
--T-E-L: 202-555-0145
-END:VCARD
-BEGIN:VCARD
-VERSION:4.0
--N:Hsiu Ress
--T-E-L: 202-555-0106
-END:VCARD
-BEGIN:VCARD
-VERSION:4.0
--N:Tarra Mcnair
--T-E-L: 202-555-0188
-END:VCARD
-BEGIN:VCARD
-VERSION:4.0
--N:Nakesha Menzel
--T-E-L: 202-555-0140
-END:VCARD
-BEGIN:VCARD
-VERSION:4.0
--N:Doug
--T-E-L:
--T-E-L;TYPE=-C-E-L-L:
--E-M-A-I-L:
--A-D-R:
--B-D-A-Y:
--O-R-G:
--U-R-L:
--P-H-O-T-O:C:\fakepath\add_circle_grey_48x48.png
-END:VCARD
-BEGIN:VCARD
-VERSION:4.0
--N:Ana Banana
--T-E-L:1754875475
--T-E-L;TYPE=-C-E-L-L:7165584875
--E-M-A-I-L:ananase@banan.com
--A-D-R:Rua amarilla
--B-D-A-Y:2019-02-05
--O-R-G:Bananales
--U-R-L:www.bananales.com
--P-H-O-T-O:C:\fakepath\default.png
+N:Douglas Achkar
+TEL:716 550 2501
+CELL:584 754 8547
+EMAIL:doug@google.com
+ADR:Rua osvaldo cruz
+BDAY:1998-06-09
+ORG:Jensleap
+URL:www.dosel.com
+PHOTO:C:\fakepath\dragdrop.png
 END:VCARD
