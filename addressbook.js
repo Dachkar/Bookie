@@ -119,7 +119,7 @@ function loadDetails(index){
     var contact = contacts[index];
 
     //Check if user has picture set
-    if (contact.photo == null){
+    if (contact.photo == null || contact.photo == ""){
       $(".contactpic").empty();
       $('<img src="default.png" width="130px" height="130px">').appendTo($(".contactpic"));
     }
