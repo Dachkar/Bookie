@@ -159,6 +159,22 @@ function importFile(filename){
     loadAndDisplayContacts();
 }
 
+function dropImport (f){
+  var path = f.path;
+  let data = fs.readFileSync(path, 'utf8');
+  var cards = vCard.parse(data);
+
+  cards.forEach((card, index) => {
+    fs.appendFileSync('contacts.txt', card.get("n")+","+card.get("tel")+","+card.get("cell")+","+card.get("email")+","+card.get("adr")+","+card.get("bday")+","+card.get("org")+","+card.get("url")+","+card.get("photo")+'\n', (err) => {
+      if (err) throw err;
+      console.log("the data was appended!");
+    });
+
+  });
+  contacts = [];
+  loadAndDisplayContacts();
+}
+
 function exportFile(){
     contacts.forEach((contact, index) => {
     console.log('exporting contact '+contact.name);
