@@ -134,7 +134,7 @@
             for (let f of e.dataTransfer.files) {
                 console.log('File(s) you dragged here: ', f.type)
                 if (f.type != 'text/plain'){
-                  window.alert("Make sure you drag and drop a .txt vCard file!");
+                  window.alert("Not a text file! Make sure you drag and drop a .txt vCard file.");
                 }
                 else {
                   //@TODO: Handle importing now
