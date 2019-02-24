@@ -166,7 +166,7 @@ function deleteEntry(index){
       
     contacts.forEach((contact, index) => {
 
-      fs.appendFileSync('contacts.txt', contact.name+","+contact.number+'\n', (err) => {
+  fs.appendFileSync('contacts.txt', contact.name+","+contact.number+","+contact.cellphone+","+contact.email+","+contact.address+","+contact.birthdate+","+contact.company+","+contact.url+","+contact.photo+'\n', (err) => {
         if (err) throw err;
         console.log("the data was appended!");
       });
