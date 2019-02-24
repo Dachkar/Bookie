@@ -133,12 +133,11 @@
 
             for (let f of e.dataTransfer.files) {
                 console.log('File(s) you dragged here: ', f.type)
-                if (f.type != 'text/plain'){
-                  window.alert("Not a text file! Make sure you drag and drop a .txt vCard file.");
+                if (f.type == 'text/x-vcard' || f.type == 'text/plain'){
+                  dropImport(f);
                 }
                 else {
-                  //@TODO: Handle importing now
-                  dropImport(f);
+                  window.alert("Not a plain text or vCard file! Make sure you drag and drop a .txt or .vcf file.");
                 }
                 
             }
