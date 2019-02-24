@@ -186,8 +186,31 @@ function showAddContactModal(){
 function importFile(filename){
     let data = fs.readFileSync(filename, 'utf8');
     var cards = vCard.parse(data);
+
+    var name = ''
+    var tel = ''
+    var cell = ''
+    var email = ''
+    var adr = ''
+    var bday = ''
+    var org = ''
+    var url = ''
+    var photo = ''
+
     cards.forEach((card, index) => {
-      fs.appendFileSync('contacts.txt', card.get("n")+","+card.get("tel")+","+card.get("cell")+","+card.get("email")+","+card.get("adr")+","+card.get("bday")+","+card.get("org")+","+card.get("url")+","+card.get("photo")+'\n', (err) => {
+
+       name = card.get("n");
+       tel = card.get("tel");
+       cell = card.get("cell");
+       email = card.get("email");
+       adr = card.get("adr");
+       bday = card.get("bday");
+       org = card.get("org");
+       url = card.get("url");
+       photo = card.get("photo");
+
+      
+      fs.appendFileSync('contacts.txt', name+","+tel+","+cell+","+email+","+adr+","+bday+","+org+","+url+","+photo+'\n', (err) => {
         if (err) throw err;
         console.log("the data was appended!");
       });
@@ -202,8 +225,29 @@ function dropImport (f){
   let data = fs.readFileSync(path, 'utf8');
   var cards = vCard.parse(data);
 
+    var name = ''
+    var tel = ''
+    var cell = ''
+    var email = ''
+    var adr = ''
+    var bday = ''
+    var org = ''
+    var url = ''
+    var photo = ''
+
   cards.forEach((card, index) => {
-    fs.appendFileSync('contacts.txt', card.get("n")+","+card.get("tel")+","+card.get("cell")+","+card.get("email")+","+card.get("adr")+","+card.get("bday")+","+card.get("org")+","+card.get("url")+","+card.get("photo")+'\n', (err) => {
+
+      name = card.get("n");
+      tel = card.get("tel");
+      cell = card.get("cell");
+      email = card.get("email");
+      adr = card.get("adr");
+      bday = card.get("bday");
+      org = card.get("org");
+      url = card.get("url");
+      photo = card.get("photo");
+
+      fs.appendFileSync('contacts.txt', name+","+tel+","+cell+","+email+","+adr+","+bday+","+org+","+url+","+photo+'\n', (err) => {
       if (err) throw err;
       console.log("the data was appended!");
     });
