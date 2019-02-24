@@ -7,6 +7,6 @@ EMAIL:doug@google.com
 ADR:Rua osvaldo cruz
 BDAY:1998-06-09
 ORG:Jensleap
-URL:www.dosel.com
+URL:https://www.dosel.com
 PHOTO:C:\fakepath\dragdrop.png
 END:VCARD

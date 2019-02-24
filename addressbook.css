@@ -124,3 +124,16 @@ html, body {
   margin-left: -62px;
   font-size: 12px;
 }
+
+.buttone {
+  background: #4057a191;
+  border: 3px solid #0b2785c5;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.buttone:hover {
+  cursor: pointer;
+  border: 3px dashed #071d66;
+}
