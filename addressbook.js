@@ -1,4 +1,5 @@
-const { ipcRenderer } = require('electron')
+const { ipcRenderer } = require('electron');
+const jquery_validation = require('jquery-validation');
 
 let $ = require('jquery')
 let fs = require('fs')
@@ -10,6 +11,43 @@ let vCard = require('vcf');
 $('#cancelbtn').on('click', () => {
   ipcRenderer.send('asynchronous-message', 'closeModal')
 })
+
+$(document).ready(function() {
+
+  $('#addform').validate({ // initialize the plugin
+      rules: {
+        contactname: {
+              required: true
+          },
+          field2: {
+              required: true
+          }
+      },
+      submitHandler: function(form) { // for demo
+                  
+          let name = $('#contactname').val()
+          let number = $('#contactnumber').val()
+          let cellphone = $('#contactcellphone').val()
+          let email = $('#contactemail').val()
+          let address = $('#contactaddress').val()
+          let birthdate = $('#contactbirthdate').val()
+          let company = $('#contactcompany').val()
+          let url = $('#contacturl').val()
+          let photo = $('#contactphoto').val()
+
+
+
+          fs.appendFileSync('contacts.txt', name+","+number+","+cellphone+","+email+","+address+","+birthdate+","+company+","+url+","+photo+'\n', (err) => {
+            if (err) throw err;
+            console.log("the data was appended!");
+          });
+
+          ipcRenderer.send('asynchronous-message', 'closeAndRefresh')
+
+      }
+  });
+  
+});
 
 //Add button from addcontact html -- Puts form field in contacts.txt file
 $('#addbtn').on('click', () => {

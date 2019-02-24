@@ -2,6 +2,19 @@
 <html>
 <head>
   <link rel="stylesheet" href="addressbook.css">
+  <!-- 
+  <script type = "text/javascript">
+      function validate(){
+        var name = document.forms["addform"]["contactname"];
+        if( name.value == "") {
+            alert( "Please provide a name!" );
+            document.forms["addform"]["contactname"].focus() ;
+            return false;
+         }
+
+      }
+  </script>-->
+
 </head>
 <body class="addContact">
 <form id="addform">
@@ -32,7 +45,7 @@
   <label>Photo</label>
   <input class="addFormInput" type="file" name="contactphoto" id="contactphoto" accept="image/*" />
   <br>
-  <button id="addbtn">Add</button>
+  <input id="addbtne" type="submit"></input>
   <button id="cancelbtn">Cancel</button>
 </form>
 <script src="./addressbook.js"></script>

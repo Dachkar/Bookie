@@ -45,7 +45,7 @@ function showEditContactModal(){
 
 function showAddContactModal(){
   // create a dialog window for modal inputs
-  modal = new BrowserWindow({parent:win, modal:true, show:false, width:350, height:280, frame:false})
+  modal = new BrowserWindow({parent:win, modal:true, show:false, width:500, height:280, frame:false})
   modal.loadFile('addContact.html');
   modal.once('ready-to-show', () => {
     modal.show();
