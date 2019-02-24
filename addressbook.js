@@ -51,7 +51,9 @@ $(document).ready(function() {
           let url = $('#contacturl').val()
           let photo = $('#contactphoto').val()
 
-
+          if (number != "" && number.length == 10){
+            number = number.slice(0, 3) + " " + number.slice(3,6) + " " + number.slice(6,10);
+          }
 
           fs.appendFileSync('contacts.txt', name+","+number+","+cellphone+","+email+","+address+","+birthdate+","+company+","+url+","+photo+'\n', (err) => {
             if (err) throw err;
