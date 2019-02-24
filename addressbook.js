@@ -1,11 +1,15 @@
 const { ipcRenderer } = require('electron');
 const jquery_validation = require('jquery-validation');
+const jquery_val_extra = require("jquery-validation/dist/additional-methods.js");
 
 let $ = require('jquery')
 let fs = require('fs')
 var contacts = [];
 let modal;
 let vCard = require('vcf');
+
+
+$.extend($.validator.messages, { required: "Name is required",phoneUS: "Please insert a valid US number", url: " Please insert a valid URL(Must start with https://)"});
 
 //Cancel button from addcontact html -- Closes addcontact modal.
 $('#cancelbtn').on('click', () => {
@@ -19,8 +23,20 @@ $(document).ready(function() {
         contactname: {
               required: true
           },
-          field2: {
-              required: true
+        contactnumber: {
+            phoneUS: true
+          },
+          contactcellphone: {
+            phoneUS: true
+          },
+          contactemail: {
+            email: true
+          },
+          contacturl: {
+            url: true
+          },
+          contactphoto: {
+           extension: "jpg|png|gif|jpeg|bmp"
           }
       },
       submitHandler: function(form) { // for demo
@@ -87,7 +103,7 @@ function addEntry(name, number, cellphone, email, address, birthdate, company, u
   contact['url'] = url;
   contact['photo'] = photo;
 
-  
+ 
   contacts.push(contact);
   var index = contacts.length-1;
 
