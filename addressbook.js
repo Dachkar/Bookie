@@ -52,7 +52,17 @@ $(document).ready(function() {
           let photo = $('#contactphoto').val()
 
           if (number != "" && number.length == 10){
-            number = number.slice(0, 3) + " " + number.slice(3,6) + " " + number.slice(6,10);
+            number = '('+ number.slice(0, 3)+ ')' + " " + number.slice(3,6) + " - " + number.slice(6,10);
+          }
+          if (number != "" && number.length == 12){
+            number = '('+ number.slice(0, 3)+ ')' + " " + number.slice(4,7) + " - " + number.slice(8,12);
+          }
+
+          if (cellphone != "" && cellphone.length == 10){
+            cellphone = '('+ cellphone.slice(0, 3)+ ')' + " " + cellphone.slice(3,6) + " - " + cellphone.slice(6,10);
+          }
+          if (cellphone != "" && cellphone.length == 12){
+            cellphone = '('+ cellphone.slice(0, 3)+ ')' + " " + cellphone.slice(4,7) + " - " + cellphone.slice(8,12);
           }
 
           fs.appendFileSync('contacts.txt', name+","+number+","+cellphone+","+email+","+address+","+birthdate+","+company+","+url+","+photo+'\n', (err) => {
