@@ -299,7 +299,7 @@ function exportFile(){
     card.set("url", contact.url);
     card.set("photo", contact.photo);
 
-    fs.appendFileSync("vcard.txt", card.toString() + '\n',(err) => {
+    fs.appendFileSync("vcard.vcf", card.toString() + '\n',(err) => {
       if (err) throw err;
       console.log("the data was exported!");
     });
