@@ -127,13 +127,13 @@ html, body {
 
 .buttone {
   background: #4057a191;
-  border: 3px solid #0b2785c5;
-  padding: 3px;
+  border: 4px solid #0b2885a2;
+  padding: 4px;
   text-align: center;
   text-decoration: none;
 }
 
 .buttone:hover {
   cursor: pointer;
-  border: 3px dashed #071d66;
+  border: 4px solid #081f6b;
 }
