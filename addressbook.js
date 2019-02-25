@@ -7,6 +7,8 @@ let fs = require('fs')
 var contacts = [];
 let modal;
 let vCard = require('vcf');
+var selectedContacts = {};
+
 
 
 $.extend($.validator.messages, { required: "Name is required",phoneUS: "Please insert a valid US number", url: " Please insert a valid URL(Must start with https://)"});
@@ -153,9 +155,8 @@ function loadDetails(index){
     
     $('#editbtn').off('click');
     $('#editbtn').on('click', () => {
-      editEntry(index);
+    editEntry(contact);
     });
-
 
     $('#deletebtn').off('click');
     $('#deletebtn').on('click', () => {
@@ -163,8 +164,9 @@ function loadDetails(index){
     })
 }
 
-function editEntry(index){
-  ipcRenderer.send('asynchronous-message', 'showEditModal')
+
+function editEntry(contact){
+  ipcRenderer.send('showEditModal', contact)
 }
 
 //Called by the delete button. 

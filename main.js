@@ -5,6 +5,16 @@ const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 let win
 let modal
 
+ipcMain.on('showEditModal', (event, arg) => {
+  console.log(arg)
+
+  modal = new BrowserWindow({parent:win, modal:true, show:false, width:525, height:300, frame:false})
+  modal.loadFile('editContact.html');
+  modal.once('ready-to-show', () => {
+    modal.show();
+  })
+})
+
 ipcMain.on('asynchronous-message', (event, arg) => {
   console.log(arg) // prints "ping"
   //event.sender.send('asynchronous-reply', 'pong')
@@ -14,9 +24,6 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 
   else if (arg == "showModal"){
     showAddContactModal();
-  }
-  else if (arg == "showEditModal"){
-    showEditContactModal();
   }
   else if (arg == "closeAndRefresh"){
     win.webContents.send('asynchronous-message', 'refreshList');
@@ -34,14 +41,6 @@ ipcMain.on('new-window', function(e, url) {
   require('electron').shell.openExternal(url);
 });
 
-function showEditContactModal(){
-  // create a dialog window for modal inputs
-  modal = new BrowserWindow({parent:win, modal:true, show:false, width:525, height:300, frame:false})
-  modal.loadFile('editContact.html');
-  modal.once('ready-to-show', () => {
-    modal.show();
-  })
-}
 
 function showAddContactModal(){
   // create a dialog window for modal inputs
