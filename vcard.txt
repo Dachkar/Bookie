@@ -1,12 +1,12 @@
 BEGIN:VCARD
 VERSION:4.0
 N:Douglas Achkar
-TEL:716 550 2501
-CELL:584 754 8547
-EMAIL:doug@google.com
-ADR:Rua osvaldo cruz
-BDAY:1998-06-09
+TEL:(716) 220 - 5880
+CELL:(505) 225 - 0120
+EMAIL:dachkar@buffalo.edu
+ADR:705 Villas Dr W
+BDAY:1996-06-09
 ORG:Jensleap
-URL:https://www.dosel.com
+URL:https://www.google.com
 PHOTO:C:\fakepath\dragdrop.png
 END:VCARD
