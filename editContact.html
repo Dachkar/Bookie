@@ -9,32 +9,56 @@
   <input class="addFormInput" type="text" value="" name="editcontactname" id="editcontactname" />
   <br>
   <label>Number</label>
-  <input class="addFormInput" type="text" name="contactnumber" id="contactnumber" />
+  <input class="addFormInput" type="text" name="editcontactnumber" id="editcontactnumber" />
   <br>
   <label>Cellphone Number</label>
-  <input class="addFormInput" type="tel" name="contactcellphone" id="contactcellphone" />
+  <input class="addFormInput" type="tel" name="editcontactcellphone" id="editcontactcellphone" />
   <br>
   <label>Email</label>
-  <input class="addFormInput" type="text" name="contactemail" id="contactemail" />
+  <input class="addFormInput" type="text" name="editcontactemail" id="editcontactemail" />
   <br>
   <label>Address</label>
-  <input class="addFormInput" type="text" name="contactaddress" id="contactaddress" />
+  <input class="addFormInput" type="text" name="editcontactaddress" id="editcontactaddress" />
   <br>
   <label>Birth date</label>
-  <input class="addFormInput" min="1900-01-01" max="2019-12-29" type="date" name="contactbirthdate" id="contactbirthdate" />
+  <input class="addFormInput" min="1900-01-01" max="2019-12-29" type="date" name="editcontactbirthdate" id="editcontactbirthdate" />
   <br>
   <label>Company</label>
-  <input class="addFormInput" type="text" name="contactcompany" id="contactcompany" />
+  <input class="addFormInput" type="text" name="editcontactcompany" id="editcontactcompany" />
   <br>
   <label>URL</label>
-  <input class="addFormInput" type="url" name="contacturl" id="contacturl" />
+  <input class="addFormInput" type="url" name="editcontacturl" id="editcontacturl" />
   <br>
   <label>Photo</label>
-  <input class="addFormInput" type="file" name="contactphoto" id="contactphoto" accept="image/*" />
+  <input class="addFormInput" type="file" name="editcontactphoto" id="editcontactphoto" accept="image/*" />
   <br>
   <button class="buttone" id="addbtn">Update</button>
   <button class="buttone" id="cancelbtn">Cancel</button>
 </form>
+<script>
+  try {
+    let $ = require('jquery')
+
+    $(document).ready(function() { require('electron').ipcRenderer.send('pageDoneLoading') })
+    
+    require('electron').ipcRenderer.on('sendingContact', (event, contact) => {
+        $('#editcontactname').val(contact.name) 
+        $('#editcontactnumber').val(contact.number)    
+        $('#editcontactcellphone').val(contact.cellphone)    
+        $('#editcontactemail').val(contact.email)    
+        $('#editcontactaddress').val(contact.address)    
+        $('#editcontactbirthdate').val(contact.birthdate)    
+        $('#editcontactcompany').val(contact.company)    
+        $('#editcontacturl').val(contact.url)    
+        $('#editcontactphoto').val(contact.photo)    
+
+        
+      })
+  } catch (error) {
+    alert(error)
+  }
+    
+</script>
 <script src="./addressbook.js"></script>
 
 </body>

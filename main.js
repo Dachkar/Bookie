@@ -5,15 +5,22 @@ const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 let win
 let modal
 
-ipcMain.on('showEditModal', (event, arg) => {
-  console.log(arg)
+let contact
 
+ipcMain.on('showEditModal', (event, arg) => {
+  contact = arg
   modal = new BrowserWindow({parent:win, modal:true, show:false, width:525, height:300, frame:false})
   modal.loadFile('editContact.html');
   modal.once('ready-to-show', () => {
     modal.show();
   })
+
 })
+
+ipcMain.on('pageDoneLoading', () => {
+  modal.webContents.send('sendingContact', contact)
+})
+
 
 ipcMain.on('asynchronous-message', (event, arg) => {
   console.log(arg) // prints "ping"
@@ -40,6 +47,7 @@ ipcMain.on('new-window', function(e, url) {
   e.preventDefault();
   require('electron').shell.openExternal(url);
 });
+
 
 
 function showAddContactModal(){
