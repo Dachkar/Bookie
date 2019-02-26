@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="addressbook.css">
 </head>
 <body class="addContact">
-<form id="addform">
+<form id="editform">
   <label>Name</label>
   <input class="addFormInput" type="text" value="" name="editcontactname" id="editcontactname" />
   <br>
@@ -32,7 +32,7 @@
   <label>Photo</label>
   <input class="addFormInput" type="file" name="editcontactphoto" id="editcontactphoto" accept="image/*" />
   <br>
-  <button class="buttone" id="addbtn" type="submit">Update</button>
+  <button class="buttone" id="addsbtn" type="submit">Update</button>
   <button class="buttone" id="cancelbtn">Cancel</button>
 </form>
 <script src="./addressbook.js"></script>
@@ -54,11 +54,72 @@
         $('#editcontacturl').val(contact.url)    
         $('#editcontactphoto').val(contact.photo)    
 
+    
         
       })
   } catch (error) {
   }
     
+  $(document).ready(function() {
+
+$('#editform').validate({ // initialize the plugin
+    rules: {
+      editcontactname: {
+            required: true
+        },
+        editcontactnumber: {
+          phoneUS: true
+        },
+        editcontactcellphone: {
+          phoneUS: true
+        },
+        editcontactemail: {
+          email: true
+        },
+        editcontacturl: {
+          url: true
+        },
+        editcontactphoto: {
+         extension: "jpg|png|gif|jpeg|bmp"
+        }
+    },
+    submitHandler: function(form) { // for demo
+                
+        let name = $('#editcontactname').val()
+        let number = $('#editcontactnumber').val()
+        let cellphone = $('#editcontactcellphone').val()
+        let email = $('#editcontactemail').val()
+        let address = $('#editcontactaddress').val()
+        let birthdate = $('#editcontactbirthdate').val()
+        let company = $('#editcontactcompany').val()
+        let url = $('#editcontacturl').val()
+        let photo = $('#editcontactphoto').val()
+
+        if (number != "" && number.length == 10){
+          number = '('+ number.slice(0, 3)+ ')' + " " + number.slice(3,6) + " - " + number.slice(6,10);
+        }
+        if (number != "" && number.length == 12){
+          number = '('+ number.slice(0, 3)+ ')' + " " + number.slice(4,7) + " - " + number.slice(8,12);
+        }
+
+        if (cellphone != "" && cellphone.length == 10){
+          cellphone = '('+ cellphone.slice(0, 3)+ ')' + " " + cellphone.slice(3,6) + " - " + cellphone.slice(6,10);
+        }
+        if (cellphone != "" && cellphone.length == 12){
+          cellphone = '('+ cellphone.slice(0, 3)+ ')' + " " + cellphone.slice(4,7) + " - " + cellphone.slice(8,12);
+        }
+
+        fs.appendFileSync('contacts.txt', name+","+number+","+cellphone+","+email+","+address+","+birthdate+","+company+","+url+","+photo+'\n', (err) => {
+          if (err) throw err;
+          console.log("the data was appended!");
+        });
+
+        ipcRenderer.send('asynchronous-message', 'closeAndRefresh')
+
+    }
+});
+
+});
 </script>
 
 </body>
