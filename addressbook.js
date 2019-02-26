@@ -7,7 +7,6 @@ let fs = require('fs')
 var contacts = [];
 let modal;
 let vCard = require('vcf');
-var selectedContacts = {};
 
 
 
