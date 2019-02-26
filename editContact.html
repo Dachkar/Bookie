@@ -32,9 +32,11 @@
   <label>Photo</label>
   <input class="addFormInput" type="file" name="editcontactphoto" id="editcontactphoto" accept="image/*" />
   <br>
-  <button class="buttone" id="addbtn">Update</button>
+  <button class="buttone" id="addbtn" type="submit">Update</button>
   <button class="buttone" id="cancelbtn">Cancel</button>
 </form>
+<script src="./addressbook.js"></script>
+
 <script>
   try {
     let $ = require('jquery')
@@ -55,11 +57,9 @@
         
       })
   } catch (error) {
-    alert(error)
   }
     
 </script>
-<script src="./addressbook.js"></script>
 
 </body>
 </html>

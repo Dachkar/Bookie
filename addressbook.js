@@ -196,6 +196,7 @@ function loadAndDisplayContacts() {
    //Check if file exists
    if(fs.existsSync(filename)) {
       let data = fs.readFileSync(filename, 'utf8').split('\n')
+      contacts = []
       $('#contactlist').html("<tr><th>Name</th><th>Phone</th></tr>");
       data.forEach((contact, index) => {
          let [ name, number, cellphone, email, address, birthdate, company, url, photo ] = contact.split(',')
