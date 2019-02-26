@@ -7,8 +7,9 @@ let modal
 
 let contact
 
-ipcMain.on('showEditModal', (event, arg) => {
+ipcMain.on('showEditModal', (event, arg, arg2) => {
   contact = arg
+  index = arg2
   modal = new BrowserWindow({parent:win, modal:true, show:false, width:525, height:300, frame:false})
   modal.loadFile('editContact.html');
   modal.once('ready-to-show', () => {
@@ -18,7 +19,7 @@ ipcMain.on('showEditModal', (event, arg) => {
 })
 
 ipcMain.on('pageDoneLoading', () => {
-  modal.webContents.send('sendingContact', contact)
+  modal.webContents.send('sendingContact', contact, index)
 })
 
 

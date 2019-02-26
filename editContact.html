@@ -38,12 +38,13 @@
 <script src="./addressbook.js"></script>
 
 <script>
+  var editingIndex = 0;
   try {
     let $ = require('jquery')
 
     $(document).ready(function() { require('electron').ipcRenderer.send('pageDoneLoading') })
     
-    require('electron').ipcRenderer.on('sendingContact', (event, contact) => {
+    require('electron').ipcRenderer.on('sendingContact', (event, contact, index) => {
         $('#editcontactname').val(contact.name) 
         $('#editcontactnumber').val(contact.number)    
         $('#editcontactcellphone').val(contact.cellphone)    
@@ -54,7 +55,7 @@
         $('#editcontacturl').val(contact.url)    
         $('#editcontactphoto').val(contact.photo)    
 
-    
+        editingIndex = index;
         
       })
   } catch (error) {
@@ -119,7 +120,9 @@ $('#editform').validate({ // initialize the plugin
     }
 });
 
+
 });
+
 </script>
 
 </body>

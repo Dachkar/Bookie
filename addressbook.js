@@ -155,7 +155,7 @@ function loadDetails(index){
     
     $('#editbtn').off('click');
     $('#editbtn').on('click', () => {
-    editEntry(contact);
+    editEntry(contact, index);
     });
 
     $('#deletebtn').off('click');
@@ -165,8 +165,8 @@ function loadDetails(index){
 }
 
 
-function editEntry(contact){
-  ipcRenderer.send('showEditModal', contact)
+function editEntry(contact, index){
+  ipcRenderer.send('showEditModal', contact, index)
 }
 
 //Called by the delete button. 
