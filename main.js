@@ -44,6 +44,10 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 })
 
 //Allowing links to be opened from app.
+//Source: https://stackoverflow.com/questions/32402327
+//User Rene Herrmann suggested that the channel 'new-window' is used when a link has a taget=blank tag
+//Then, electron's shell is used to open that url in a new window:
+//https://github.com/electron/electron/blob/master/docs/api/shell.md#shellopenexternalurl
 ipcMain.on('new-window', function(e, url) {
   e.preventDefault();
   require('electron').shell.openExternal(url);
