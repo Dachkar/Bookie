@@ -215,6 +215,8 @@ function loadDetails(index){
     
     $('#editbtn').off('click');
     $('#editbtn').on('click', () => {
+      contactCopy = contact
+      deleteEntry(index)
     editEntry(contact, index);
     });
 
